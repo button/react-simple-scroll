@@ -50,9 +50,9 @@ To install `react-simple-scroll`, add it as a middleware to `<Router />`:
 ```jsx
 import { Router, applyRouterMiddleware } from 'react-router';
 import { scrollMiddleware } from 'react-simple-scroll';
-import isEqual from 'lodash.isequal'
+import isEqual from 'lodash.isequal';
 
-<Router render={applyRouterMiddleware(scrollMiddleware({ isEqual }))>
+<Router render={applyRouterMiddleware(scrollMiddleware({ isEqual }))}>
   {routes}
 </Router>
 ```
