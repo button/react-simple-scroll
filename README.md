@@ -41,17 +41,19 @@ three things:
   this package assuming most users would already have an implementation
   hanging around.
 
+We support any browser supported by both [react](https://github.com/facebook/react) and [react-router](https://github.com/ReactTraining/react-router).
+
 ## Quick Start
 
 To install `react-simple-scroll`, add it as a middleware to `<Router />`:
 
-```javascript
+```jsx
 import { Router, applyRouterMiddleware } from 'react-router';
 import { scrollMiddleware } from 'react-simple-scroll';
 import isEqual from 'lodash.isequal'
 
 <Router render={applyRouterMiddleware(scrollMiddleware({ isEqual }))>
- {routes}
+  {routes}
 </Router>
 ```
 
@@ -65,33 +67,35 @@ different, the scroll position is reset to `(0, 0)`.
 
 ```jsx
 const routes = (
-	<Route path="/">
+  <Route path="/">
 
-	  <Route path="foo" component={FooView} scrollFrame>
-	    <IndexRoute component={FooContainer} />
-	    <Route path="bar" component={BarContainer} />
-	    <Route path="baz" component={BazContainer} />
-	  </Route>
+    <Route path="foo" component={FooView} scrollFrame>
+      <IndexRoute component={FooContainer} />
+      <Route path="bar" component={BarContainer} />
+      <Route path="baz" component={BazContainer} />
+    </Route>
 
-	  <Route path="bloop" component={BloopView} scrollFrame>
-	    <IndexRoute component={BloopIndexContainer} />
-	    <Route scrollFrame>
-	      <Route path="bleep" component={BleepContainer} />
-	      <Route path="bleep/blap" component={BleepBlapContainer} />
-	      <Route path="bleep/blorp" component={BleepBlorpContainer} />
-	    </Route>
-	  </Route>
+    <Route path="bloop" component={BloopView} scrollFrame>
+      <IndexRoute component={BloopIndexContainer} />
+      <Route scrollFrame>
+        <Route path="bleep" component={BleepContainer} />
+        <Route path="bleep/blap" component={BleepBlapContainer} />
+        <Route path="bleep/blorp" component={BleepBlorpContainer} />
+      </Route>
+    </Route>
 
-	</Route>
+  </Route>
 );
 ```
 
-* `/foo/bar` to `/foo/baz` will not reset the scroll position
-* `/foo` to `/foo/bar` will not reset the scroll position
-* `/foo` to `/` will reset the scroll position
-* `/bloop/bleep` to `/bloop/bleep/blap` will not reset the scroll position
-* `/bloop` to `/bloop/bleep` will reset the scroll position
-* `/foo` to `/bloop` will reset the scroll position
+| **From**      | **To**              | **Reset?** |
+|---------------|---------------------|------------|
+| `/foo/bar`    | `/foo/baz`          | no         |
+|`/foo`         | `/foo/bar`          | no         |
+|`/foo`         | `/`                 | yes        |
+|`/bloop/bleep` | `/bloop/bleep/blap` | no         |
+|`/bloop`       | `/bloop/bleep`      | yes        |
+|`/foo`         | `/bloop`            | yes        |
 
 #### Algorithm
 
@@ -138,12 +142,12 @@ components of your heirarchy.
 
 ##### props
 
-| Name                              | Type   | Required? | Description                           |
-|-----------------------------------|--------|-----------|---------------------------------------|
-| routerProps                       | object | true      | Supplied by react-router              |
-| isEqual                           | func   | true      | Returns true if two objects are equal |
-| enableBrowserScrollRestoration    | bool   | false     | Default `false`, see [Scroll Restoration](#scroll-restoration)             |
-| children                          | node   | false     | Supplied by react-router              |
+| **Name**                          | **Type** | **Required?** | **Description**                       |
+|-----------------------------------|----------|---------------|---------------------------------------|
+| routerProps                       | object   | true          | Supplied by react-router              |
+| isEqual                           | func     | true          | Returns true if two objects are equal |
+| enableBrowserScrollRestoration    | bool     | false         | Default `false`, see [Scroll Restoration](#scroll-restoration)             |
+| children                          | node     | false         | Supplied by react-router              |
 
 ## Scroll Restoration
 
@@ -157,8 +161,8 @@ simply pass the `enableBrowserScrollRestoration` to `scrollMiddleware`:
 
 ```jsx
 const middleware = scrollMiddleware({
-	isEqual,
-	enableBrowserScrollRestoration: true
+  isEqual,
+  enableBrowserScrollRestoration: true
 });
 ```
 
@@ -178,6 +182,7 @@ development effort is invested.
 #### Lifecycle of a Change
 
 * Open an [Issue](https://github.com/button/react-simple-scroll/issues) describing the change
+* Fork `react-simple-scroll`
 * Create a new branch for your changes: `git checkout -b <user>/update-bloop`
 * Implement and add tests as necessary
 * Make sure all tests pass: `npm test`

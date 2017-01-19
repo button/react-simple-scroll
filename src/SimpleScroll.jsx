@@ -58,7 +58,7 @@ SimpleScroll.propTypes = {
     }).isRequired
   }).isRequired,
   isEqual: PropTypes.func.isRequired,
-  enableBrowserScrollRestoration: PropTypes.bool,
+  enableBrowserScrollRestoration: PropTypes.bool.isRequired,
   children: PropTypes.node
 };
 
