@@ -52,7 +52,11 @@ import { Router, applyRouterMiddleware } from 'react-router';
 import { scrollMiddleware } from 'react-simple-scroll';
 import isEqual from 'lodash.isequal';
 
-<Router render={applyRouterMiddleware(scrollMiddleware({ isEqual }))}>
+const render = applyRouterMiddleware(
+  scrollMiddleware({ isEqual })
+);
+
+<Router render={render}>
   {routes}
 </Router>
 ```
