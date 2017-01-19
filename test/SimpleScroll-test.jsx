@@ -10,10 +10,12 @@ import SimpleScroll from '../src/SimpleScroll';
 describe('<SimpleScroll />', () => {
   before(function() {
     this._scrollTo = global.window.scrollTo;
+    this._history = global.window.history;
   });
 
   after(function() {
     global.window.scrollTo = this._scrollTo;
+    global.window.history = this._history;
   });
 
   beforeEach(function() {
@@ -147,5 +149,41 @@ describe('<SimpleScroll />', () => {
     });
 
     expect(global.window.scrollTo.callCount).to.be(1);
+  });
+
+  describe('enableBrowserScrollRestoration', () => {
+    it('sets scrollRestoration by default', () => {
+      expect(global.window.history.scrollRestoration).to.be('manual');
+    });
+
+    it('does not set scrollRestoration if the prop is true', function() {
+      global.window.history.scrollRestoration = 'auto';
+      expect(global.window.history.scrollRestoration).to.be('auto');
+
+      mount(
+        <SimpleScroll
+          isEqual={this.isEqual}
+          routerProps={this.routerProps}
+          enableBrowserScrollRestoration>
+          <div />
+        </SimpleScroll>
+      );
+
+      expect(global.window.history.scrollRestoration).to.be('auto');
+    });
+
+    it('does not set scrollRestoration if the brower history doesnt support it', function() {
+      delete global.window.history.scrollRestoration;
+
+      mount(
+        <SimpleScroll
+          isEqual={this.isEqual}
+          routerProps={this.routerProps} >
+          <div />
+        </SimpleScroll>
+      );
+
+      expect(global.window.history.scrollRestoration).to.be(undefined);
+    });
   });
 });
