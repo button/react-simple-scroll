@@ -1,4 +1,4 @@
-# react-simple-scroll
+# react-simple-scroll [![Build Status](https://travis-ci.org/button/react-simple-scroll.svg?branch=master)](https://travis-ci.com/button/react-simple-scroll)
 
 `react-simple-scroll` is a declarative API for managing the scroll position
 of a React application that uses [react-router](https://github.com/ReactTraining/react-router).
