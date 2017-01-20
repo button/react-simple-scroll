@@ -152,14 +152,21 @@ describe('<SimpleScroll />', () => {
   });
 
   describe('enableBrowserScrollRestoration', () => {
-    it('sets scrollRestoration by default', () => {
+    beforeEach(() => {
+      global.window.history.scrollRestoration = 'auto';
+    });
+
+    it('sets scrollRestoration by default', function() {
+      mount(
+        <SimpleScroll isEqual={this.isEqual} routerProps={this.routerProps}>
+          <div />
+        </SimpleScroll>
+      );
+
       expect(global.window.history.scrollRestoration).to.be('manual');
     });
 
     it('does not set scrollRestoration if the prop is true', function() {
-      global.window.history.scrollRestoration = 'auto';
-      expect(global.window.history.scrollRestoration).to.be('auto');
-
       mount(
         <SimpleScroll
           isEqual={this.isEqual}
