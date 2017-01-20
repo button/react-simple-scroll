@@ -10,12 +10,10 @@ import SimpleScroll from '../src/SimpleScroll';
 describe('<SimpleScroll />', () => {
   before(function() {
     this._scrollTo = global.window.scrollTo;
-    this._history = global.window.history;
   });
 
   after(function() {
     global.window.scrollTo = this._scrollTo;
-    global.window.history = this._history;
   });
 
   beforeEach(function() {
@@ -152,10 +150,6 @@ describe('<SimpleScroll />', () => {
   });
 
   describe('enableBrowserScrollRestoration', () => {
-    beforeEach(() => {
-      global.window.history.scrollRestoration = 'auto';
-    });
-
     it('sets scrollRestoration by default', function() {
       mount(
         <SimpleScroll isEqual={this.isEqual} routerProps={this.routerProps}>
@@ -167,6 +161,8 @@ describe('<SimpleScroll />', () => {
     });
 
     it('does not set scrollRestoration if the prop is true', function() {
+      global.window.history.scrollRestoration = 'auto';
+
       mount(
         <SimpleScroll
           isEqual={this.isEqual}
