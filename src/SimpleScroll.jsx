@@ -1,5 +1,6 @@
 // eslint-disable-next-line import/no-unresolved
-import React, { PropTypes, Component } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class SimpleScroll extends Component {
 
