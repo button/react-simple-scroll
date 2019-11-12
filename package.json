@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/button/react-simple-scroll#readme",
   "peerDependencies": {
-    "react": "^0.14.0 || ^16.0.0",
+    "react": "^16.0.0",
     "react-router": "^2.4.0 || ^3.0.0"
   },
   "devDependencies": {
