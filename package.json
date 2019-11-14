@@ -28,7 +28,7 @@
   "homepage": "https://github.com/button/react-simple-scroll#readme",
   "peerDependencies": {
     "react": "^16.0.0",
-    "react-router": "^2.4.0 || ^3.0.0"
+    "react-router": "^3.2.0"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
