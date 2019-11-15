@@ -43,6 +43,10 @@ three things:
 
 We support any browser supported by both [react](https://github.com/facebook/react) and [react-router](https://github.com/ReactTraining/react-router).
 
+#### React 16 Support
+
+Please note that as of `2.0.0` we provided React 16 support but with `react-router ^3.2.0` as a peer dependency. Since `react-router 4`, the Route architecture has changed significantly which means that using `react-simple-scroll` as a middleware is no longer compatible. We will work on a new version of `react-simple-scroll` in the future that will support `react-router 4` and beyond.
+
 ## Quick Start
 
 To install `react-simple-scroll`, add it as a middleware to `<Router />`:
